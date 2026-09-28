@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 240 6% 4%;
+        --foreground: 0 0% 100%;
+        --card: 240 4% 7%;
+        --card-foreground: 0 0% 100%;
+        --popover: 240 4% 7%;
+        --popover-foreground: 0 0% 100%;
+        --primary: 72 100% 50%;
+        --primary-foreground: 240 6% 4%;
+        --secondary: 240 4% 10%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 240 4% 12%;
+        --muted-foreground: 240 5% 65%;
+        --accent: 72 100% 50%;
+        --accent-foreground: 240 6% 4%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 0 0% 100% / 0.1;
+        --input: 0 0% 100% / 0.1;
+        --ring: 72 100% 50%;
+        --radius: 0.75rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-white/10;
+    }
+    html {
+        scroll-behavior: auto;
+    }
+    html.lenis,
+    html.lenis body {
+        height: auto;
+    }
+    .lenis.lenis-smooth {
+        scroll-behavior: auto !important;
+    }
+    .lenis.lenis-smooth [data-lenis-prevent] {
+        overscroll-behavior: contain;
+    }
+    .lenis.lenis-stopped {
+        overflow: hidden;
+    }
+    body {
+        background-color: #0a0a0c;
+        color: #ffffff;
+        font-family: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+    }
+    ::selection {
+        background: #ccff00;
+        color: #0a0a0c;
+    }
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #0a0a0c;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #2a2a30;
+        border-radius: 8px;
+        border: 2px solid #0a0a0c;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #3a3a42;
+    }
+    :focus-visible {
+        outline: 2px solid #ccff00;
+        outline-offset: 3px;
+    }
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}
+
+@layer utilities {
+    .font-display {
+        font-family: "Cabinet Grotesk", ui-sans-serif, system-ui, sans-serif;
+    }
+    .font-body {
+        font-family: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+    }
+    .font-mono2 {
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+    }
+    .text-stroke {
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.22);
+        color: transparent;
+    }
+    .grain {
+        position: fixed;
+        inset: -50%;
+        z-index: 80;
+        pointer-events: none;
+        opacity: 0.05;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E");
+        background-size: 220px 220px;
+    }
+}
+
+@keyframes marquee-drift {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes pulse-dot {
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(204, 255, 0, 0.5);
+    }
+    50% {
+        opacity: 0.75;
+        box-shadow: 0 0 0 6px rgba(204, 255, 0, 0);
+    }
+}
+
+.animate-marquee {
+    animation: marquee-drift 46s linear infinite;
+}
+
+.animate-pulse-dot {
+    animation: pulse-dot 2.2s ease-in-out infinite;
+}

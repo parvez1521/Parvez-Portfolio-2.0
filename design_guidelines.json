@@ -1,0 +1,133 @@
+{
+  "theme": "dark",
+  "typography": {
+    "headings": {
+      "font": "Cabinet Grotesk, Outfit, or Clash Display",
+      "style": "premium modern sans-serif, large bold headlines, tight hierarchy, oversized typography in the hero. Tracking tight (-0.02em to -0.04em)."
+    },
+    "body": {
+      "font": "Satoshi or Inter",
+      "style": "clean, modern, highly legible. High contrast white/off-white against dark backgrounds."
+    },
+    "accents": {
+      "font": "JetBrains Mono or Space Mono",
+      "style": "used for micro-stats, overlines, and technical labels. Uppercase, tracking wide (0.1em to 0.2em)."
+    }
+  },
+  "colors": {
+    "background": {
+      "primary": "#0A0A0C",
+      "secondary": "#121214",
+      "tertiary": "#1A1A1E"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#A0A0AB",
+      "muted": "#71717A"
+    },
+    "accent": {
+      "primary": "#CCFF00",
+      "hover": "#E5FF66",
+      "subtle": "rgba(204, 255, 0, 0.1)"
+    },
+    "borders": {
+      "default": "rgba(255, 255, 255, 0.1)",
+      "hover": "rgba(255, 255, 255, 0.2)"
+    }
+  },
+  "visual_enhancers": {
+    "glassmorphism": "Subtle glassmorphism for navbars and floating elements. Must use background color (e.g., bg-black/60) with backdrop-blur-xl and a delicate 1px inner stroke (border-white/10). No purely transparent backgrounds over content.",
+    "gradients": "Soft, subtle radial gradients (e.g., green/lime accent) in the background. Maximum 20% opacity. Avoid full-screen generic linear gradients.",
+    "texture": "Subtle grain/noise overlay on the entire body to eliminate digital flatness and create an editorial/cinematic feel.",
+    "borders": "1px solid borders with 10% white opacity. Use nested radii (e.g., parent rounded-2xl, child rounded-xl)."
+  },
+  "layouts": {
+    "general": "Desktop-first mentality but fully responsive. High breathing room (Tailwind p-12, p-16, p-24). Mobile-first CSS grids with optical alignment.",
+    "hero": "Kinetic layout. Large oversized headline, tight leading. Visually secondary 3D element (Spline/R3F) confined strictly to a hero boundary, never overlapping text or CTAs.",
+    "portfolio": "Masonry or strict CSS grid for cinematic thumbnails. Large scale (no tiny cards). Hover reveals play button/video snippet.",
+    "cards": "Services and Case Studies should use solid dark surfaces or subtle gradients (not generic SaaS cards). Consider 'Grid Borders' (The Technical Look) for case studies."
+  },
+  "motion": {
+    "scroll": "Lenis smooth scrolling is mandatory for premium momentum.",
+    "reveals": "Framer Motion for scroll reveals. Text lines masked and revealed from bottom to top (kinetic typography).",
+    "hover_states": "Image scale on hover for portfolio (overflow-hidden wrapper). Buttons should have smooth background/color transitions.",
+    "marquee": "One slow, editorial marquee for 'Building in Public' or social proof (very slow, smooth drift, gap-32).",
+    "micro_interactions": "Animated counters for the stats (150K+, 11.8K+, 4.9K+).",
+    "3d_element": "Lightweight, subtle 3D character (via Spline) floating or rotating gently in the hero."
+  },
+  "accessibility": {
+    "contrast": "Ensure text over images/gradients meets 4.5:1 ratio using dark overlays.",
+    "testing": "All interactive elements (buttons, links, form inputs) must include data-testid (e.g., data-testid='hero-cta-button', data-testid='contact-form-submit').",
+    "focus": "Clear focus states with the primary accent color."
+  },
+  "3d_libraries": {
+    "recommended": "@splinetool/react-spline for the 3D character (lightweight, easily embeddable, looks premium) or React Three Fiber if custom geometry is needed. Do not let it block interactions."
+  },
+  "image_urls": [
+    {
+      "url": "https://images.unsplash.com/photo-1490810194309-344b3661ba39?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHwzfHxkYXJrJTIwdmlkZW8lMjBlZGl0aW5nJTIwc3R1ZGlvfGVufDB8fHx8MTc5MDYxNzYzNHww&ixlib=rb-4.1.0&q=85",
+      "category": "about_portrait",
+      "description": "Silhouette of a person editing in a dark studio. Use for the 'About' section for Parvez."
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHwxfHxkYXJrJTIwdmlkZW8lMjBlZGl0aW5nJTIwc3R1ZGlvfGVufDB8fHx8MTc5MDYxNzYzNHww&ixlib=rb-4.1.0&q=85",
+      "category": "portfolio_thumbnail",
+      "description": "Dark video editing timeline. Great for Long Form / Editing portfolio thumbnail."
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1614963326505-843868e1d83a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHw0fHxkYXJrJTIwdmlkZW8lMjBlZGl0aW5nJTIwc3R1ZGlvfGVufDB8fHx8MTc5MDYxNzYzNHww&ixlib=rb-4.1.0&q=85",
+      "category": "portfolio_thumbnail",
+      "description": "Monitor with editing timeline and color wheels. Perfect for overall Portfolio display."
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1627571795816-b565f55efdb8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjh8MHwxfHNlYXJjaHw0fHxjaW5lbWF0aWMlMjBmaWxtJTIwc3RpbGwlMjBkYXJrfGVufDB8fHx8MTc5MDYxNzYzNHww&ixlib=rb-4.1.0&q=85",
+      "category": "portfolio_thumbnail",
+      "description": "Cinematic silhouette with orange lighting. Use for 'Short Form' or a cinematic project thumbnail."
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1572283046480-e990be92d301?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjh8MHwxfHNlYXJjaHwzfHxjaW5lbWF0aWMlMjBmaWxtJTIwc3RpbGwlMjBkYXJrfGVufDB8fHx8MTc5MDYxNzYzNHww&ixlib=rb-4.1.0&q=85",
+      "category": "portfolio_thumbnail",
+      "description": "Dark cinematic gas station at night. Excellent for a music video or narrative edit thumbnail."
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1762279389042-9439bfb6c155?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODh8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMHRlY2glMjBncmVlbiUyMG5lb258ZW58MHx8fHwxNzkwNjE3NjM0fDA&ixlib=rb-4.1.0&q=85",
+      "category": "case_study",
+      "description": "Abstract neon green lines. Use for 'AI Videos' or 'Motion Graphics' case study thumbnail."
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1648614593495-e0955bf287e5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODh8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMHRlY2glMjBncmVlbiUyMG5lb258ZW58MHx8fHwxNzkwNjE3NjM0fDA&ixlib=rb-4.1.0&q=85",
+      "category": "case_study",
+      "description": "Green and black abstract visual. Use for Tech Hacks AI showcase or social media content case study."
+    }
+  ],
+  "instructions_to_main_agent": [
+    "Build a React (.jsx/.js) frontend using Tailwind CSS, Framer Motion, and Lucide React icons. You have .js files not .tsx files.",
+    "Do not use generic Shadcn cards out of the box for the portfolio or case studies; strip Vercel-like styling to create dark, borderless, or fine-1px-bordered premium components.",
+    "Navbar MUST have a solid/semi-solid background (e.g., bg-black/60) with backdrop-blur-xl and NEVER be fully transparent over content.",
+    "Use @splinetool/react-spline for the 3D character in the Hero. Confine it to a specific div on the right/bottom corner of the hero so it NEVER overlaps the primary text, CTAs, or the header.",
+    "Implement Lenis smooth scrolling.",
+    "Use framer-motion for kinetic typography (line reveals) in the hero, and staggered fade-ups for the services/portfolio grids.",
+    "Portfolio needs a filter mechanism (All, Short Form, Long Form, Motion Graphics, AI, Social Media) and a cinematic grid layout.",
+    "Implement a project detail modal using framer-motion AnimatePresence or a dedicated dialog, containing a video player placeholder, client, category, overview, and tools.",
+    "Add 'sonner' for toast notifications in the Contact form.",
+    "Include specific placeholders where real data is missing. DO NOT invent fake names, clients, or awards. Use 'Placeholder Client', 'Placeholder Testimonial', etc.",
+    "Use the exact provided URLs for the imagery in the designated sections.",
+    "Ensure all interactive components and key text have 'data-testid' properties."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. In frontend design, this creates what users call the 'AI slop' aesthetic. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur).",
+    "You MUST NOT apply universal transition. Eg: transition: all. Always add transitions for specific interactive elements like button, input excluding transforms.",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file. This disrupts the human natural reading flow of text.",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style.",
+    "NEVER use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯 etc for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures, noise overlays, custom cursors, selection states, and loading animations: separates good from extraordinary.",
+    "Prioritize using pre-existing components from src/components/ui when applicable.",
+    "Use sonner for toasts, located in /app/src/components/ui/sonner.js or equivalent JS."
+  ]
+}
