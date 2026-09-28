@@ -20,7 +20,7 @@ import Cursor from "@/components/Cursor";
 
 function App() {
   useEffect(() => {
-    const lenis = new Lenis({ lerp: 0.09 });
+    const lenis = new Lenis({ lerp: 0.08, wheelMultiplier: 0.95 });
     window.__lenis = lenis;
     let raf;
     const loop = (time) => {

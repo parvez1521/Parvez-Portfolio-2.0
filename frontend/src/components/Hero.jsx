@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { ArrowUpRight, Play } from "lucide-react";
 import { MaskedLine, Counter, scrollToSection } from "./motion";
 
@@ -6,6 +6,23 @@ export default function Hero() {
   const { scrollY } = useScroll();
   const glowY = useTransform(scrollY, [0, 600], [0, 140]);
   const fade = useTransform(scrollY, [0, 500], [1, 0.15]);
+
+  const tiltX = useMotionValue(0);
+  const tiltY = useMotionValue(0);
+  const rotateX = useSpring(tiltX, { stiffness: 150, damping: 18, mass: 0.4 });
+  const rotateY = useSpring(tiltY, { stiffness: 150, damping: 18, mass: 0.4 });
+
+  const handlePhotoMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    tiltY.set(px * 10);
+    tiltX.set(-py * 10);
+  };
+  const handlePhotoLeave = () => {
+    tiltX.set(0);
+    tiltY.set(0);
+  };
 
   return (
     <section
@@ -126,29 +143,39 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.5 }}
           className="relative lg:col-span-5"
         >
-          <div
-            className="relative overflow-hidden rounded-3xl border border-white/10 bg-surface"
+          <motion.div
+            onMouseMove={handlePhotoMove}
+            onMouseLeave={handlePhotoLeave}
+            style={{ rotateX, rotateY, transformPerspective: 900 }}
+            className="group relative will-change-transform"
+            data-cursor="hover"
             data-testid="hero-photo-frame"
           >
-            <img
-              src="/parvez.jpg"
-              alt="Parvez Siddiqui — Video Editor and AI Content Creator"
-              className="aspect-[4/5] w-full object-cover"
-              data-testid="hero-photo"
-            />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
+              className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-accent/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
             />
-            <div className="absolute inset-x-0 bottom-0 flex items-center justify-between border-t border-white/10 bg-ink/40 px-5 py-3 backdrop-blur-md">
-              <span className="font-mono2 text-[10px] uppercase tracking-[0.25em] text-white/60">
-                Parvez Siddiqui
-              </span>
-              <span className="font-mono2 text-[10px] uppercase tracking-[0.25em] text-accent">
-                Editor / Creator
-              </span>
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-surface transition-colors duration-500 group-hover:border-accent/40">
+              <img
+                src="/parvez.jpg"
+                alt="Parvez Siddiqui — Video Editor and AI Content Creator"
+                className="aspect-[4/5] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                data-testid="hero-photo"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
+              />
+              <div className="absolute inset-x-0 bottom-0 flex items-center justify-between border-t border-white/10 bg-ink/40 px-5 py-3 backdrop-blur-md">
+                <span className="font-mono2 text-[10px] uppercase tracking-[0.25em] text-white/60">
+                  Parvez Siddiqui
+                </span>
+                <span className="font-mono2 text-[10px] uppercase tracking-[0.25em] text-accent">
+                  Editor / Creator
+                </span>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
