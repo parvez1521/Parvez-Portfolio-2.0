@@ -11,7 +11,6 @@ const PAGE_LINKS = [
 const SOCIAL_LINKS = [
   { label: "Instagram", href: socials.instagram },
   { label: "LinkedIn", href: socials.linkedin },
-  { label: "Behance", href: socials.behance },
 ];
 
 export default function Footer() {

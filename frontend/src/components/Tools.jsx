@@ -13,7 +13,7 @@ export default function Tools() {
             Toolkit
           </p>
         </Reveal>
-        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
           {tools.map((tool, i) => (
             <Reveal key={tool.name} delay={i * 0.05}>
               <div

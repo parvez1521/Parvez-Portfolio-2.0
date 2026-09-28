@@ -34,7 +34,6 @@ const labelClass =
 const SOCIAL_LINKS = [
   { label: "Instagram", handle: "@tech_hacks.ai", href: socials.instagram },
   { label: "LinkedIn", handle: "Parvez Siddiqui", href: socials.linkedin },
-  { label: "Behance", handle: "Video Editing Portfolio", href: socials.behance },
 ];
 
 export default function Contact() {

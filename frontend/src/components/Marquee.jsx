@@ -1,11 +1,11 @@
 const ITEMS = [
   "SHORT-FORM",
   "LONG-FORM",
-  "MOTION GRAPHICS",
-  "AI VIDEO",
   "SOCIAL CONTENT",
-  "KINETIC TYPE",
   "RETENTION-FIRST",
+  "HOOKS",
+  "STORYTELLING",
+  "CAPTIONS",
 ];
 
 export default function Marquee() {

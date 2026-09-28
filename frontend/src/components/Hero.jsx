@@ -1,9 +1,6 @@
-import { lazy, Suspense } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, Play } from "lucide-react";
 import { MaskedLine, Counter, scrollToSection } from "./motion";
-
-const HeroCharacter = lazy(() => import("./HeroCharacter"));
 
 export default function Hero() {
   const { scrollY } = useScroll();
@@ -127,33 +124,28 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="relative hidden lg:col-span-5 lg:block"
+          className="relative lg:col-span-5"
         >
           <div
-            className="relative h-[520px] overflow-hidden rounded-3xl border border-white/10 bg-surface/60 backdrop-blur-sm"
-            data-testid="hero-3d-panel"
+            className="relative overflow-hidden rounded-3xl border border-white/10 bg-surface"
+            data-testid="hero-photo-frame"
           >
+            <img
+              src="/parvez.jpg"
+              alt="Parvez Siddiqui — Video Editor and AI Content Creator"
+              className="aspect-[4/5] w-full object-cover"
+              data-testid="hero-photo"
+            />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_80%,rgba(204,255,0,0.08),transparent_60%)]"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
             />
-            <Suspense
-              fallback={
-                <div className="flex h-full items-center justify-center">
-                  <span className="font-mono2 text-[11px] uppercase tracking-[0.3em] text-white/30">
-                    Loading…
-                  </span>
-                </div>
-              }
-            >
-              <HeroCharacter />
-            </Suspense>
-            <div className="absolute inset-x-0 bottom-0 flex items-center justify-between border-t border-white/10 px-5 py-3">
-              <span className="font-mono2 text-[10px] uppercase tracking-[0.25em] text-white/40">
-                PS-01 · Creative Unit
+            <div className="absolute inset-x-0 bottom-0 flex items-center justify-between border-t border-white/10 bg-ink/40 px-5 py-3 backdrop-blur-md">
+              <span className="font-mono2 text-[10px] uppercase tracking-[0.25em] text-white/60">
+                Parvez Siddiqui
               </span>
               <span className="font-mono2 text-[10px] uppercase tracking-[0.25em] text-accent">
-                Online
+                Editor / Creator
               </span>
             </div>
           </div>

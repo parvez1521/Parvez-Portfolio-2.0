@@ -135,8 +135,6 @@ export const tools = [
   { name: "After Effects", mark: "Ae" },
   { name: "Photoshop", mark: "Ps" },
   { name: "AI Tools", mark: "AI" },
-  { name: "Figma", mark: "Fg" },
-  { name: "Canva", mark: "Ca" },
 ];
 
 export const processSteps = [
@@ -166,5 +164,4 @@ export const socials = {
   email: "Parvezsiddiqui018@gmail.com",
   instagram: "https://www.instagram.com/tech_hacks.ai/",
   linkedin: "#",
-  behance: "https://www.behance.net/gallery/224749645/Video-editing-Portfolio",
 };
