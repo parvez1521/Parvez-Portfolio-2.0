@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { CATEGORIES, projects } from "../data/projects";
 import { Reveal, SectionHeading } from "./motion";
 import ProjectModal from "./ProjectModal";
@@ -56,40 +56,55 @@ export default function Portfolio() {
           className="mt-10 columns-1 gap-6 sm:columns-2 lg:columns-3"
           data-testid="portfolio-grid"
         >
-          {visible.map((project, i) => (
+          {visible.map((project) => (
             <button
               key={project.id}
               onClick={() => setActive(project)}
-              className="group relative mb-6 block w-full break-inside-avoid overflow-hidden rounded-2xl border border-white/10 text-left"
+              className="group mb-8 block w-full break-inside-avoid text-left"
               data-testid={`project-card-${project.id}`}
             >
-              <div className={`relative ${project.aspect} overflow-hidden`}>
-                <img
-                  src={project.thumbnail}
-                  alt={project.title}
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/20 to-transparent" />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <span className="flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-ink/40 backdrop-blur-md">
-                    <Play className="h-6 w-6 fill-white text-white" />
+              <div
+                className={`relative ${project.aspect} overflow-hidden rounded-2xl border border-white/10 bg-surface`}
+              >
+                {project.videoUrl ? (
+                  <video
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    poster={project.videoUrl.replace(/\.mp4$/, "-poster.jpg")}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.pause();
+                      e.currentTarget.currentTime = 0;
+                    }}
+                  >
+                    <source
+                      src={project.videoUrl.replace(/\.mp4$/, ".webm")}
+                      type="video/webm"
+                    />
+                    <source src={project.videoUrl} type="video/mp4" />
+                  </video>
+                ) : (
+                  <img
+                    src={project.thumbnail}
+                    alt={project.title}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                )}
+              </div>
+              <div className="mt-4 flex items-start justify-between gap-4 px-1">
+                <div>
+                  <span className="font-mono2 text-[10px] uppercase tracking-[0.25em] text-accent">
+                    {project.category}
                   </span>
-                </div>
-                <div className="absolute inset-x-0 bottom-0 p-6">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono2 text-[10px] uppercase tracking-[0.25em] text-accent">
-                      {project.category}
-                    </span>
-                    <ArrowUpRight className="h-4 w-4 text-white/50 opacity-0 transition-opacity group-hover:opacity-100" />
-                  </div>
-                  <h3 className="mt-2 font-display text-xl font-bold tracking-tight text-white sm:text-2xl">
+                  <h3 className="mt-1.5 font-display text-xl font-bold tracking-tight text-white">
                     {project.title}
                   </h3>
-                  <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-white/55">
-                    {project.description}
-                  </p>
                 </div>
+                <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-white/40 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
               </div>
             </button>
           ))}

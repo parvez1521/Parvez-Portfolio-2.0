@@ -51,12 +51,20 @@ export default function ProjectModal({ project, projects, onClose, onNext }) {
           <div className="relative lg:col-span-3">
             {project.videoUrl ? (
               <video
-                src={project.videoUrl}
                 controls
                 autoPlay
-                className="aspect-video w-full bg-ink object-cover"
+                muted
+                loop
+                playsInline
+                className="max-h-[75vh] w-full bg-ink object-contain"
                 data-testid="project-video-player"
-              />
+              >
+                <source
+                  src={project.videoUrl.replace(/\.mp4$/, ".webm")}
+                  type="video/webm"
+                />
+                <source src={project.videoUrl} type="video/mp4" />
+              </video>
             ) : (
               <div className="relative aspect-video w-full overflow-hidden bg-ink lg:aspect-auto lg:h-full lg:min-h-[420px]">
                 <img
