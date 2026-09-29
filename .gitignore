@@ -65,6 +65,9 @@ chainlit.md
 agenthub/agents/youtube/db
 
 # Archive files and large assets
+frontend/public/videos/joshua-vsl-2.mp4
+frontend/public/videos/welix-new-changes.mp4
+frontend/public/videos/avadhut-sathe-sebi-ban.mp4
 **/*.zip
 **/*.tar.gz
 **/*.tar
