@@ -8,10 +8,14 @@ import ProjectModal from "./ProjectModal";
 const VideoCard = ({ project, onOpen }) => {
   const videoRef = useRef(null);
   const [sound, setSound] = useState(false);
+  const isYouTube = project.videoUrl?.includes("youtube.com/embed/");
 
-  const handleEnter = () => videoRef.current?.play().catch(() => {});
+  const handleEnter = () => {
+    if (!isYouTube) videoRef.current?.play().catch(() => {});
+  };
   const handleLeave = () => {
     const v = videoRef.current;
+    if (isYouTube) return;
     if (v) {
       v.pause();
       v.currentTime = 0;
@@ -34,20 +38,31 @@ const VideoCard = ({ project, onOpen }) => {
           aria-label={`Open ${project.title}`}
           data-testid={`project-open-${project.id}`}
         >
-          <video
-            ref={videoRef}
-            muted={!sound}
-            loop
-            playsInline
-            preload="metadata"
-            poster={project.poster}
-            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-          >
-            {project.webmUrl && <source src={project.webmUrl} type="video/webm" />}
-            <source src={project.videoUrl} type="video/mp4" />
-          </video>
+          {isYouTube ? (
+            <iframe
+              src={`${project.videoUrl}?rel=0&modestbranding=1&playsinline=1`}
+              title={project.title}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="pointer-events-none h-full w-full border-0"
+            />
+          ) : (
+            <video
+              ref={videoRef}
+              muted={!sound}
+              loop
+              playsInline
+              preload="metadata"
+              poster={project.poster}
+              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            >
+              {project.webmUrl && <source src={project.webmUrl} type="video/webm" />}
+              <source src={project.videoUrl} type="video/mp4" />
+            </video>
+          )}
         </button>
-        <button
+        {!isYouTube && <button
           onClick={(e) => {
             e.stopPropagation();
             setSound((s) => !s);
@@ -58,7 +73,7 @@ const VideoCard = ({ project, onOpen }) => {
           data-testid={`sound-toggle-${project.id}`}
         >
           {sound ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
-        </button>
+        </button>}
       </div>
       <span className="sr-only">{project.title}</span>
     </div>

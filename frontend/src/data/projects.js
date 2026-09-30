@@ -1,12 +1,31 @@
 export const CATEGORIES = ["All", "Short Form", "Long Form"];
 
-const externalMedia = {
-  avadhutShortForm:
-    "https://xreracn7esnjiv3e.public.blob.vercel-storage.com/Avadhut%20Sathe%20SEBI%20Ban.mp4",
-  joshuaVsl:
-    "https://xreracn7esnjiv3e.public.blob.vercel-storage.com/Joshua%20VSL%202.00.mp4",
-  welixShortForm:
-    "https://xreracn7esnjiv3e.public.blob.vercel-storage.com/Welix%20new%20changes.mp4",
+// Replace video providers here without changing project metadata or UI code.
+export const VIDEO_SOURCES = {
+  gooseInstaCta: {
+    videoUrl: "/videos/goose-insta-cta.mp4",
+    webmUrl: "/videos/goose-insta-cta.webm",
+    poster: "/videos/goose-insta-cta-poster.jpg",
+  },
+  polloAiLogo: {
+    videoUrl: "/videos/pollo-ai-logo.mp4",
+    webmUrl: "/videos/pollo-ai-logo.webm",
+    poster: "/videos/pollo-ai-logo-poster.jpg",
+  },
+  hook2: {
+    videoUrl: "/videos/hook-2.mp4",
+    webmUrl: "/videos/hook-2.webm",
+    poster: "/videos/hook-2-poster.jpg",
+  },
+  joshuaVsl: {
+    videoUrl: "https://www.youtube.com/embed/7LWuN5gH6x4",
+  },
+  welixNewChanges: {
+    videoUrl: "https://www.youtube.com/embed/pzZeu3hZCT0",
+  },
+  avadhutSatheSebiBan: {
+    videoUrl: "https://www.youtube.com/embed/x-AFiKBeYgc",
+  },
 };
 
 export const projects = [
@@ -18,9 +37,7 @@ export const projects = [
     year: "2026",
     thumbnail: null,
     aspect: "aspect-[9/16]",
-    videoUrl: "/videos/goose-insta-cta.mp4",
-    webmUrl: "/videos/goose-insta-cta.webm",
-    poster: "/videos/goose-insta-cta-poster.jpg",
+    ...VIDEO_SOURCES.gooseInstaCta,
     description:
       "Short-form Instagram edit built around a clear call to action — hook, pacing and end-card timing.",
     overview:
@@ -37,9 +54,7 @@ export const projects = [
     year: "2026",
     thumbnail: null,
     aspect: "aspect-[9/16]",
-    videoUrl: "/videos/pollo-ai-logo.mp4",
-    webmUrl: "/videos/pollo-ai-logo.webm",
-    poster: "/videos/pollo-ai-logo-poster.jpg",
+    ...VIDEO_SOURCES.polloAiLogo,
     description:
       "A vertical logo reveal — motion, timing and sound design built for social placements.",
     overview:
@@ -56,9 +71,7 @@ export const projects = [
     year: "2026",
     thumbnail: null,
     aspect: "aspect-[9/16]",
-    videoUrl: "/videos/hook-2.mp4",
-    webmUrl: "/videos/hook-2.webm",
-    poster: "/videos/hook-2-poster.jpg",
+    ...VIDEO_SOURCES.hook2,
     description:
       "A hook-driven vertical edit engineered to stop the scroll in the first seconds.",
     overview:
@@ -69,13 +82,13 @@ export const projects = [
   },
   {
     id: "joshua-vsl-2",
-    title: "Joshua VSL",
+    title: "Joshua VSL 2.00",
     client: "Joshua Jones",
     category: "Long Form",
     year: "2026",
     thumbnail: null,
     aspect: "aspect-[16/10]",
-    videoUrl: externalMedia.joshuaVsl,
+    ...VIDEO_SOURCES.joshuaVsl,
     description: "Long-form VSL edit with a clear narrative structure and polished delivery.",
     overview: "A long-form sales video edited for clarity, pacing and a focused viewing experience.",
     approach: "Structured the edit around the message, keeping transitions purposeful and the delivery easy to follow.",
@@ -83,13 +96,13 @@ export const projects = [
   },
   {
     id: "welix-new-changes",
-    title: "Short-Form",
+    title: "Welix New Changes",
     client: "Welix",
     category: "Long Form",
     year: "2026",
     thumbnail: null,
     aspect: "aspect-[16/10]",
-    videoUrl: externalMedia.welixShortForm,
+    ...VIDEO_SOURCES.welixNewChanges,
     description: "Long-form finance content edit with structured pacing and visual support.",
     overview: "A client edit shaped for clear delivery, steady pacing and a polished viewing flow.",
     approach: "Kept the information moving with clean cuts, supporting visuals and deliberate emphasis on key points.",
@@ -103,7 +116,7 @@ export const projects = [
     year: "2026",
     thumbnail: null,
     aspect: "aspect-[9/16]",
-    videoUrl: externalMedia.avadhutShortForm,
+    ...VIDEO_SOURCES.avadhutSatheSebiBan,
     description: "Short-form finance edit built for clear, attention-led delivery.",
     overview: "A vertical edit focused on keeping a timely topic direct, readable and engaging.",
     approach: "Used a tight opening, purposeful pacing and supporting motion to keep the message clear in a social feed.",
@@ -111,4 +124,6 @@ export const projects = [
   },
 ];
 
-export const configuredProjects = projects.filter((project) => Boolean(project.videoUrl));
+export const configuredProjects = projects.filter((project) =>
+  project.videoUrl?.includes("youtube.com/embed/"),
+);

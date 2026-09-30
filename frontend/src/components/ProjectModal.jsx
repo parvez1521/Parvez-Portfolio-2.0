@@ -17,6 +17,7 @@ export default function ProjectModal({ project, projects, onClose, onNext }) {
 
   const nextProject =
     projects[(projects.findIndex((p) => p.id === project.id) + 1) % projects.length];
+  const isYouTube = project.videoUrl?.includes("youtube.com/embed/");
 
   return (
     <motion.div
@@ -50,6 +51,18 @@ export default function ProjectModal({ project, projects, onClose, onNext }) {
         <div className="grid lg:grid-cols-5">
           <div className="relative lg:col-span-3">
             {project.videoUrl ? (
+              isYouTube ? (
+                <div className="relative aspect-video w-full bg-ink lg:aspect-auto lg:h-full lg:min-h-[420px]">
+                  <iframe
+                    src={`${project.videoUrl}?rel=0&modestbranding=1&autoplay=1&playsinline=1`}
+                    title={project.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="absolute inset-0 h-full w-full border-0"
+                    data-testid="project-video-player"
+                  />
+                </div>
+              ) : (
               <video
                 controls
                 autoPlay
@@ -62,6 +75,7 @@ export default function ProjectModal({ project, projects, onClose, onNext }) {
                 {project.webmUrl && <source src={project.webmUrl} type="video/webm" />}
                 <source src={project.videoUrl} type="video/mp4" />
               </video>
+              )
             ) : (
               <div className="relative aspect-video w-full overflow-hidden bg-ink lg:aspect-auto lg:h-full lg:min-h-[420px]">
                 <img
