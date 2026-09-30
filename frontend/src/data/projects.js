@@ -124,6 +124,4 @@ export const projects = [
   },
 ];
 
-export const configuredProjects = projects.filter((project) =>
-  project.videoUrl?.includes("youtube.com/embed/"),
-);
+export const configuredProjects = projects.filter((project) => Boolean(project.videoUrl));
