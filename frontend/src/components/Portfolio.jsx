@@ -43,6 +43,7 @@ const VideoCard = ({ project, onOpen }) => {
               src={`${project.videoUrl}?rel=0&modestbranding=1&playsinline=1`}
               title={project.title}
               loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
               className="pointer-events-none h-full w-full border-0"

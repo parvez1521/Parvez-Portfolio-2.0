@@ -56,6 +56,7 @@ export default function ProjectModal({ project, projects, onClose, onNext }) {
                   <iframe
                     src={`${project.videoUrl}?rel=0&modestbranding=1&autoplay=1&playsinline=1`}
                     title={project.title}
+                    referrerPolicy="strict-origin-when-cross-origin"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                     className="absolute inset-0 h-full w-full border-0"
